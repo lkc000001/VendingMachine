@@ -21,7 +21,7 @@ import util.ValidateUtil;
 
 public class ShoppingCartRepositories {
 	
-	private Connection conn = new ConnectionDB().getConnection();
+	private Connection conn = ConnectionDB.getMsSqlDBConnection();
 	
 	private DateTimtUtil dateTimtUtil = new DateTimtUtil();
 	

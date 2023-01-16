@@ -8,16 +8,15 @@
     	<meta name="viewport" content="width=device-width" />
 	    <title>商品首頁</title>
 	
-	    <link href="<%=request.getContextPath()%>/component/jQuery-UI/jquery-ui-1.12.1.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/jQuery-UI/jquery-ui.theme-1.12.1.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/Font-Awesome/css/all.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/Bootstrap/bootstrap.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/overlayScrollbars/OverlayScrollbars.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/AdminLTE/adminlte-3.1.0.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/css/style.css" rel="stylesheet" >
-	    <link href="<%=request.getContextPath()%>/component/css/jsgrid.min.css" />
-	    
-		<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+		<link href="<c:url value="/component/jQuery-UI/jquery-ui-1.12.1.min.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/jQuery-UI/jquery-ui.theme-1.12.1.min.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/Font-Awesome/css/all.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/Bootstrap/bootstrap.min.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/overlayScrollbars/OverlayScrollbars.min.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/AdminLTE/adminlte-3.1.0.min.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/css/style.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/css/jsgrid.min.css" />"  rel="stylesheet" type="text/css" />
+		<link href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"  rel="stylesheet" type="text/css" />
 		
 	</head>
 	<body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-collapseX sidebar-collapse" style="height: auto;">
@@ -146,13 +145,13 @@
 	        </footer>
 		</div>
 	
-		<script src="<c:url value="/component/jQuery/jquery-3.6.0.min.js"/>"></script>
-		<script src="<c:url value="/component/jQuery-UI/jquery-ui-1.12.1.min.js"/>"></script>
-		<script src="<c:url value="/component/Bootstrap/bootstrap.bundle.min.js"/>"></script>
-		<script src="<c:url value="/component/overlayScrollbars/jquery.overlayScrollbars.min.js"/>"></script>
-		<script src="<c:url value="/component/AdminLTE/adminlte-3.1.0.min.js"/>"></script>
-		<script src="<c:url value="/component/js/all.js"/>"></script>
-		<script src="<c:url value="/component/js/util.js"/>"></script>
+		<script src="<c:url value="/component/jQuery/jquery-3.6.0.min.js" />" ></script>
+		<script src="<c:url value="/component/jQuery-UI/jquery-ui-1.12.1.min.js" />" ></script>
+		<script src="<c:url value="/component/Bootstrap/bootstrap.bundle.min.js" />" ></script>
+		<script src="<c:url value="/component/overlayScrollbars/jquery.overlayScrollbars.min.js" />" ></script>
+		<script src="<c:url value="/component/AdminLTE/adminlte-3.1.0.min.js" />" ></script>
+		<script src="<c:url value="/component/js/all.js" />" ></script>
+		<script src="<c:url value="/component/js/util.js" />" ></script>
 		
 		<script>
 		    document.getElementById(${ selectFunction }).innerHTML = '<i class="fa-solid fa-circle nav-icon"></i>';

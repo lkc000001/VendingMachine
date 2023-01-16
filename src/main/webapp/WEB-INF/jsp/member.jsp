@@ -7,15 +7,7 @@
 	<head>
     	<meta name="viewport" content="width=device-width" />
 	    <title>會員資料管理</title>
-	
-	    <link href="<%=request.getContextPath()%>/component/jQuery-UI/jquery-ui-1.12.1.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/jQuery-UI/jquery-ui.theme-1.12.1.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/Font-Awesome/css/all.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/Bootstrap/bootstrap.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/overlayScrollbars/OverlayScrollbars.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/AdminLTE/adminlte-3.1.0.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/css/style.css" rel="stylesheet" >
-		<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+		<%@ include file="utilcss.jsp" %>
 	</head>
 	<body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-collapseX sidebar-collapse" style="height: auto;">
 		<div class="wrapper">
@@ -89,9 +81,13 @@
 			                    <div class="btn searchbtn newbtn-yellow" onclick="doquery(1);">搜尋</div>
 			                    &nbsp;&nbsp;
 			                    <div class="btn searchbtn newbtn-blue" onclick="doSaveModal();">新增</div>
+			                    &nbsp;&nbsp;
+			                    <div class="btn searchbtn newbtn-blue" onclick="wopen();">wopen</div>
 			                </div>
 			            </div>
 		            </form>
+		            <div id="showwin">
+		            </div>
 		            <div>
 						<form class="pure-form">
 							<fieldset>
@@ -212,7 +208,6 @@
 									<button type="button" id="showdelete" class="btn modal-delete-btn" onclick="doDeleteConfirm();">刪除</button>
 									&nbsp;&nbsp;
 									<button type="button" id="saveConfirmbtn" class="btn btn-primary" onclick="dosave();">儲存</button>
-									
 								</div>
 							</div>
 						</div>
@@ -229,14 +224,8 @@
 	        </footer>
 		</div>
 	
-		<script src="<%=request.getContextPath()%>/component/jQuery/jquery-3.6.0.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/jQuery-UI/jquery-ui-1.12.1.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/Bootstrap/bootstrap.bundle.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/overlayScrollbars/jquery.overlayScrollbars.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/AdminLTE/adminlte-3.1.0.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/js/all.js"></script>
-		<script src="<%=request.getContextPath()%>/component/js/util.js"></script>
-			
+		<%@ include file="utilts.jsp" %>
+		
 		<script>
 		    document.getElementById(${ selectFunction }).innerHTML = '<i class="fa-solid fa-circle nav-icon"></i>';
 		    document.getElementById("selectSize").value = '${ selectSize }';
@@ -303,7 +292,7 @@
 			
 			//清除查詢資料
 			function doClear(num) {
-				document.getElementById("id").value = null;
+				/*document.getElementById("id").value = null;
 				document.getElementById("account").value = null;
 				document.getElementById("name").value = null;
 				document.getElementById("enabled").value = null;
@@ -312,7 +301,16 @@
 				document.getElementById("updatePwd").value = null;
 				document.getElementById("updateName").value = null;
 				document.getElementById("updateEnabled").value = 1;
-				document.getElementById("updateRole").value = 1;
+				document.getElementById("updateRole").value = 1;*/
+				$("#myForm").find(":text,select").each(function() {
+	                $(this).val("");
+	            });
+				$("#updateForm").find(":text").each(function() {
+	                $(this).val("");
+	            });
+				$("#updateEnabled").val("1");
+				$("#updateRole").val("1");
+				
 				if(num == 0) {
 					const old_tbody = document.getElementById("memberBody")
 			    	const new_tbody = document.createElement('tbody');
@@ -348,7 +346,7 @@
         		document.getElementById("updateId").value = member.cells[0].innerHTML;
         		document.getElementById("updateAccount").value = member.cells[1].innerHTML;
         		document.getElementById("updateName").value = member.cells[2].innerHTML;
-        		console.log(member.cells[3].innerHTML);
+        		//console.log(member.cells[3].innerHTML);
         		switch (member.cells[3].innerHTML) {
         		case "使用者":
         			document.getElementById("updateRole").value = 1;
@@ -360,10 +358,13 @@
         			document.getElementById("updateRole").value = 9;
         			break;
         		}
+        		
         		if( member.cells[5].innerHTML =="啟用") {
-        			document.getElementById("updateEnabled").value = 1;
+        			$("#updateEnabled").val("1");
+        			//document.getElementById("updateEnabled").value = 1;
         		} else {
-        			document.getElementById("updateEnabled").value = 0;
+        			$("#updateEnabled").val("0");
+        			//document.getElementById("updateEnabled").value = 0;
         		}
 
         		
@@ -397,6 +398,22 @@
 				document.getElementById("deleteModalTitle").innerHTML = '刪除資料';
         		document.getElementById("deleteModalBoby").innerHTML = '是否確認刪除';
         		$('#deleteModal').modal('show');
+			}
+			
+			function wopen(){
+				/*var divText = document.getElementById("myForm").outerHTML;
+				var myWindow = window.open('','','width=200,height=100');
+				var doc = myWindow.document;
+				doc.open();
+				doc.write(divText);
+				doc.close();*/
+				//var win = window.open("", "Title", 'width=800,height=600');
+				//win.document.body.innerHTML = divText;
+				/*document.getElementById("pageIndex").value = 1;
+				document.getElementById("pageSize").value = 6;
+				var dd = myForm.submit();
+				document.getElementById("showwin").value = showwin*/
+				$("#myForm").dialog();
 			}
 		</script>
 	</body>

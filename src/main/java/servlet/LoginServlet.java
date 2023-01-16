@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.http.HttpClient;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -54,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 			resp.setMessage("登入失敗<br>請確認帳號及密碼是否正確!!");
 		}
 		//取得會員資料
-		MemberService memberService = new MemberServiceImpl();
+		MemberService memberService = MemberServiceImpl.getInstance();
 		Member member = memberService.getMemberByAccount(inputUser.getAccount());
 		//檢查是否註冊
 		if(member.getAccount() != null) {

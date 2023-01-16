@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,18 +9,18 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <!--  
 	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-	    -->
-	    <link href="<%=request.getContextPath()%>/component/Bootstrap/bootstrap.min.css" rel="stylesheet" />
-		<link href="<%=request.getContextPath()%>/component/css/normalize.css" rel="stylesheet" >
-	    <link href="<%=request.getContextPath()%>/component/css/style.css" rel="stylesheet" >
-	    <link href="<%=request.getContextPath()%>/component/css/login.css" rel="stylesheet" >
-	    
+	   -->
+	    <link href="<c:url value="/component/Bootstrap/bootstrap.min.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/css/normalize.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/css/style.css" />"  rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/component/css/login.css" />"  rel="stylesheet" type="text/css" />
+		
 	    <title>登入畫面</title>
 	</head>
 	<body>
 		<div class="whitebg">
 	        <div class="logo">
-	            <img src="<%=request.getContextPath()%>/component/image/logo.jpg">
+	            <img src="<c:url value="/component/image/logo.jpg" />">
 	        </div>
 	        <div class="s-title">
 	            <span class="s-txt">生活用品販賣機登入系統</span>
@@ -52,11 +53,10 @@
 	     <!-- 
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>	
 		 -->
-		 <script src="<%=request.getContextPath()%>/component/Bootstrap/bootstrap.bundle.min.js"></script>
-		<script src="<%=request.getContextPath()%>/component/jQuery/jquery-3.6.0.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/jQuery-UI/jquery-ui-1.12.1.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/js/util.js"></script>
-	    
+		<script src="<c:url value="/component/Bootstrap/bootstrap.bundle.min.js" />" ></script>
+		<script src="<c:url value="/component/jQuery/jquery-3.6.0.min.js" />" ></script>
+		<script src="<c:url value="/component/jQuery-UI/jquery-ui-1.12.1.min.js" />" ></script>
+		<script src="<c:url value="/component/js/util.js" />" ></script> 
 	    <script>
 	    	//登入認證
 	    	function doLogin() {

@@ -17,7 +17,7 @@ import util.ValidateUtil;
 
 public class WalletRepositories {
 	
-	private Connection conn = new ConnectionDB().getConnection();
+	private Connection conn = ConnectionDB.getMsSqlDBConnection();
 	
 	public Wallet getWalletByMemberId(Long memberId) {
 		String sql = "SELECT id, memberId, amount, createtime FROM WALLET WHERE memberId=?";

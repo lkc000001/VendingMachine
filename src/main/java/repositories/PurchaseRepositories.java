@@ -18,7 +18,7 @@ import util.ValidateUtil;
 
 public class PurchaseRepositories {
 	
-	private Connection conn = new ConnectionDB().getConnection();
+	private Connection conn = ConnectionDB.getMsSqlDBConnection();
 	
 	public List<Product> queryPurchase(Purchase purchase) {
 		StringBuilder sql = new StringBuilder("SELECT id, name, price, cost, stock, unit, classify, image, createtime, enabled FROM PRODUCT ");

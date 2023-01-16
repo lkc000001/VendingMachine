@@ -1,12 +1,10 @@
 package repositories;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import config.ConnectionDB;
@@ -16,7 +14,15 @@ import util.ValidateUtil;
 
 public class MemberRepositories {
 	
-	private Connection conn = new ConnectionDB().getConnection();
+	private static MemberRepositories memberRepositories = new MemberRepositories();
+	
+	private MemberRepositories(){ }
+	
+	public static MemberRepositories getInstance(){
+		return memberRepositories;
+	}
+	
+	private Connection conn = ConnectionDB.getMsSqlDBConnection();
 	
 	public Member getMemberById(Long id) {
 		String sql = "SELECT id, account, pwd, name, createtime, enabled, role FROM MEMBER WHERE id=?";

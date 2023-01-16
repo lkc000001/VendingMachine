@@ -18,7 +18,7 @@ import util.ValidateUtil;
 
 public class ProductRepositories {
 	
-	private Connection conn = new ConnectionDB().getConnection();
+	private Connection conn = ConnectionDB.getMsSqlDBConnection();
 	
 	public Product getProductById(Long id) {
 		String sql = "SELECT id, name, price, cost, stock, unit, classify, image, createtime, enabled FROM PRODUCT WHERE id=?";

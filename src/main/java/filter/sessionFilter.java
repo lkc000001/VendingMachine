@@ -22,7 +22,7 @@ import service.impl.MemberServiceImpl;
 				   		  "/shoppingList", "/stock", "/report"})
 public class sessionFilter implements Filter{
 	
-	private MemberService memberService = new MemberServiceImpl();
+	private MemberService memberService = MemberServiceImpl.getInstance();
 	
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {

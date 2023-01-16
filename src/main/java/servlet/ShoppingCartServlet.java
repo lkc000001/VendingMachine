@@ -32,7 +32,7 @@ import service.impl.WalletServiceImpl;
 @WebServlet("/shoppingCart")
 public class ShoppingCartServlet extends HttpServlet {
 	
-	private MemberService memberService = new MemberServiceImpl();
+	private MemberService memberService = MemberServiceImpl.getInstance();
 	
 	private WalletService walletService = new WalletServiceImpl();
 	

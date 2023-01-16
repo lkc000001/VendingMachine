@@ -29,7 +29,7 @@ import service.impl.WalletServiceImpl;
 @WebServlet("/shoppingList")
 public class ShoppingListServlet extends HttpServlet {
 	
-	private MemberService memberService = new MemberServiceImpl();
+	private MemberService memberService = MemberServiceImpl.getInstance();
 	
 	private WalletService walletService = new WalletServiceImpl();
 	

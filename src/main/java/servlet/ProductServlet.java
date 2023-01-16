@@ -70,6 +70,7 @@ public class ProductServlet extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/product.jsp");
 		rd.forward(request, response);
+		
 	}
 
 	@Override

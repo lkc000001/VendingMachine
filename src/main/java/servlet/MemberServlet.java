@@ -29,9 +29,11 @@ import util.PageUtil;
 @WebServlet("/member")
 public class MemberServlet extends HttpServlet {
 	
-	private MemberService memberService = new MemberServiceImpl();
+	private MemberService memberService = MemberServiceImpl.getInstance();
 	
 	private PageUtil pageUtil = new PageUtil();
+	
+	private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ").create();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,6 +50,10 @@ public class MemberServlet extends HttpServlet {
 		int pageIndex = request.getParameter("pageIndex") == null ? 1 : Integer.parseInt(request.getParameter("pageIndex"));
 		int pageSize = request.getParameter("pageSize") == null ? 10 : Integer.parseInt(request.getParameter("pageSize"));
 		int totalPage = 0;
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "UTF-8"));
+		String data = br.readLine();
+		System.out.println(data);
 		if(state != null) {
 			Member member = new Member(id, account, name, enabled, role);
 			List<Member> members = memberService.queryMember(member, new Page(pageIndex, pageSize));
@@ -75,7 +81,6 @@ public class MemberServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		RespMsg resp = new RespMsg();
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ").create();
 		
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "UTF-8"));
@@ -115,7 +120,6 @@ public class MemberServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		RespMsg resp = new RespMsg();
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ").create();
 		
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "UTF-8"));
@@ -154,7 +158,7 @@ public class MemberServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		RespMsg resp = new RespMsg();
-		Gson gson = new Gson();
+
 		String deleteId = request.getParameter("deleteid");
 		if(deleteId != null) {
 			Long id = Long.parseLong(deleteId) ;

@@ -7,15 +7,7 @@
 	<head>
     	<meta name="viewport" content="width=device-width" />
 	    <title>商品資料管理</title>
-	
-	    <link href="<%=request.getContextPath()%>/component/jQuery-UI/jquery-ui-1.12.1.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/jQuery-UI/jquery-ui.theme-1.12.1.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/Font-Awesome/css/all.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/Bootstrap/bootstrap.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/overlayScrollbars/OverlayScrollbars.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/AdminLTE/adminlte-3.1.0.min.css" rel="stylesheet" />
-	    <link href="<%=request.getContextPath()%>/component/css/style.css" rel="stylesheet" >
-		<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+	    <%@ include file="utilcss.jsp" %>
 	</head>
 	<body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-collapseX sidebar-collapse" style="height: auto;">
 		<div class="wrapper">
@@ -100,12 +92,12 @@
 										<tr>
 											<th width=5%>ID</th>
 											<th width=15%>商品名稱</th>
-											<th width=8%>單價</th>
-											<th width=8%>成本</th>
-											<th width=8%>庫存</th>
+											<th width=5%>單價</th>
+											<th width=5%>成本</th>
+											<th width=5%>庫存</th>
 											<th width=5%>單位</th>
 											<th width=10%>分頖</th>
-											<th width=10%>圖片位置</th>
+											<th width=15%>圖片位置</th>
 											<th width=10%>建立日期</th>
 											<th width=8%>狀態</th>
 											<th width=10%>編輯</th>
@@ -244,14 +236,8 @@
 	        </footer>
 		</div>
 	
-		<script src="<%=request.getContextPath()%>/component/jQuery/jquery-3.6.0.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/jQuery-UI/jquery-ui-1.12.1.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/Bootstrap/bootstrap.bundle.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/overlayScrollbars/jquery.overlayScrollbars.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/AdminLTE/adminlte-3.1.0.min.js"></script>
-	    <script src="<%=request.getContextPath()%>/component/js/all.js"></script>
-		<script src="<%=request.getContextPath()%>/component/js/util.js"></script>
-			
+		<%@ include file="utilts.jsp" %>
+		
 		<script>
 		    document.getElementById(${ selectFunction }).innerHTML = '<i class="fa-solid fa-circle nav-icon"></i>';
 		    document.getElementById("selectSize").value = '${ selectSize }';
@@ -277,14 +263,14 @@
 				
 				//console.log(array1.shift());
 				if(id != '' || checkData()){
-					let methodType = 'POST';
+					let methodType = 'PUT';
 					let formArray = $("#updateForm").serializeArray();
 					if(id == '') {
+						//新增不用ID,移除ID
 						formArray.shift();
 						methodType = 'POST';
-					} else {
-						methodType = 'PUT';
-					}
+					} 
+					
 					$.ajax({
 	                    url: '<%=request.getContextPath()%>/product',
 	                    type: methodType,

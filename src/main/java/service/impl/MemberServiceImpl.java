@@ -9,7 +9,15 @@ import service.MemberService;
 
 public class MemberServiceImpl implements MemberService {
 
-	MemberRepositories memberRepositories = new MemberRepositories();
+	private static MemberServiceImpl memberServiceImpl = new MemberServiceImpl();
+	
+	private MemberServiceImpl(){ }
+	
+	public static MemberServiceImpl getInstance(){
+		return memberServiceImpl;
+	}
+	
+	MemberRepositories memberRepositories = MemberRepositories.getInstance();
 	
 	@Override
 	public Member getMemberById(Long id) {
