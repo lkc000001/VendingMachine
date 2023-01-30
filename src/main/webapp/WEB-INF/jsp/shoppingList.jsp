@@ -93,23 +93,22 @@
 										<tbody id="productBody">
 											<c:forEach varStatus="status" var="orderId" items="${ groupByOrderId }">
 												<c:set var="num" value="1" />
-												<c:forEach varStatus="status" var="shoppingList" items="${ orderId.value }">
-													<c:set var="len" value="${ orderId.value }" />
-													<tr>
-													<c:if test="${num == 1 }">
-														<td rowspan="${fn:length(len)}">${ orderId.key }</td>
-													</c:if>
-														<td>${ shoppingList.productId }</td>
-														<td>${ shoppingList.productName }</td>
-														<td>${ shoppingList.buyQuantity }</td>
-														<td>${ shoppingList.productPrice }</td>
-														<td>${ shoppingList.total }</td>
-														<td>
-															<fmt:formatDate value="${ shoppingList.createtime }" pattern="yyyy-MM-dd HH:mm:ss"/>
-														</td>
-													</tr>
-													<c:set var="num" value="2" />
-												</c:forEach>
+												<c:set var="len" value="${ orderId.value }" />
+												<tr>
+													<td rowspan="${fn:length(len)}">${ orderId.key }</td>
+													<c:forEach varStatus="status" var="shoppingList" items="${ orderId.value }">
+															<td>${ shoppingList.productId }</td>
+															<td>${ shoppingList.productName }</td>
+															<td>${ shoppingList.buyQuantity }</td>
+															<td>${ shoppingList.productPrice }</td>
+															<td>${ shoppingList.total }</td>
+															<td>
+																<fmt:formatDate value="${ shoppingList.createtime }" pattern="yyyy-MM-dd HH:mm:ss"/>
+															</td>
+														
+														<c:set var="num" value="2" />
+													</c:forEach>
+												</tr>
 											</c:forEach>
 										</tbody>
 									</c:if>
